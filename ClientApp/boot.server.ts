@@ -11,8 +11,6 @@ enableProdMode();
 
 export default createServerRenderer((params) => {
 
-  console.log('server ?');
-
   // Platform-server provider configuration
   const setupOptions: IEngineOptions = {
     appSelector: '<app-root></app-root>',
