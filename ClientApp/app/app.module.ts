@@ -49,14 +49,6 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
     imports: [
         CommonModule,
         BrowserModule.withServerTransition({
-          appId: 'my-app-id' // make sure this matches with your Server NgModule
-        }),
-        HttpClientModule,
-        TransferHttpCacheModule,
-        BrowserTransferStateModule,
-<<<<<<< HEAD
-
-
         FormsModule,
         AccordionModule.forRoot(), // You could also split this up if you don't want the Entire Module imported
 
