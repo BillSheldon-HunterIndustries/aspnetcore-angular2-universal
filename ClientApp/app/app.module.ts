@@ -54,6 +54,7 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
         HttpClientModule,
         TransferHttpCacheModule,
         BrowserTransferStateModule,
+<<<<<<< HEAD
 
 
         FormsModule,
