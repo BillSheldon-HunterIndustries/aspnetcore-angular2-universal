@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-<<<<<<< HEAD
-import { ORIGIN_URL, REQUEST } from '@nguniversal/aspnetcore-engine/tokens';
+import { ORIGIN_URL, REQUEST } from '@nguniversal/aspnetcore-engine';
 import { AppModuleShared } from './app.module';
 import { AppComponent } from './app.component';
 import { BrowserTransferStateModule } from '@angular/platform-browser';

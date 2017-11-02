@@ -2,10 +2,6 @@
 
 ## By [DevHelp.Online](http://www.DevHelp.Online)
 
-> Updated to the latest Angular 6.x
-
-> Note ServerTransferModule still in the works - fix coming soon
-=======
 # ASP.NET Core 2.0 & Angular 5(+) Advanced Starter - with Server-side prerendering (for Angular SEO)! 
 
 ## By [DevHelp.Online](http://www.DevHelp.Online)
@@ -347,10 +343,6 @@ Well now, your Client-side Angular will take over, and you'll have a fully funct
 - This repository uses ASP.Net Core 2.0, which has a hard requirement on .NET Core Runtime 2.0.0 and .NET Core SDK 2.0.0. Please install these items from [here](https://github.com/dotnet/core/blob/master/release-notes/download-archives/2.0.0-download.md)
 
 > When building components in Angular 5 there are a few things to keep in mind.
-
- - Make sure you provide Absolute URLs when calling any APIs. (The server can't understand relative paths, so `/api/whatever` will fail).
- 
- - API calls will be ran during a server, and once again during the client render, so make sure you're using transfering data that's important to you so that you don't see a flicker.
 
  - **`window`**, **`document`**, **`navigator`**, and other browser types - _do not exist on the server_ - so using them, or any library that uses them (jQuery for example) will not work. You do have some options, if you truly need some of this functionality:
     - If you need to use them, consider limiting them to only your client and wrapping them situationally. You can use the Object injected using the PLATFORM_ID token to check whether the current platform is browser or server. 

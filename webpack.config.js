@@ -101,8 +101,7 @@ module.exports = (env) => {
                 manifest: require('./ClientApp/dist/vendor-manifest.json'),
                 sourceType: 'commonjs2',
                 name: './vendor'
-            })
-        ].concat(isDevBuild ? [
+            }),
             new webpack.ContextReplacementPlugin(
               // fixes WARNING Critical dependency: the request of a dependency is an expression
               /(.+)?angular(\\|\/)core(.+)?/,
