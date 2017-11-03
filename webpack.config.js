@@ -117,10 +117,9 @@ module.exports = (env) => {
         ] : [
             // Plugins that apply in production builds only
             new AngularCompilerPlugin({
-              mainPath: path.join(__dirname, 'ClientApp/boot.server.PRODUCTION.ts'),
-              tsConfigPath: './tsconfig.json',
-              entryModule: path.join(__dirname, 'ClientApp/app/app.module.server#AppModule'),
-              exclude: ['./**/*.browser.ts']
+                tsConfigPath: './tsconfig.json',
+                entryModule: path.join(__dirname, 'ClientApp/app/app.module.server#AppModule'),
+                exclude: ['./**/*.browser.ts']
             })
         ]),
         output: {
