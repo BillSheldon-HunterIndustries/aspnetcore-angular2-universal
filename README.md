@@ -6,8 +6,6 @@
 
 
 
-> Updated to the latest Angular 5.0 - 
-
 <p align="center">
     <img src="./docs/architecture.png" alt="ASP.NET Core 2.0 Angular 5+ Starter" title="ASP.NET Core 2.0 Angular 5+ Starter">
 </p>
