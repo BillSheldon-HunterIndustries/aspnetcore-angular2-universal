@@ -2,9 +2,9 @@
 
 ## By [DevHelp.Online](http://www.DevHelp.Online)
 
-# ASP.NET Core 2.0 & Angular 5(+) Advanced Starter - with Server-side prerendering (for Angular SEO)! 
 
-## By [DevHelp.Online](http://www.DevHelp.Online)
+
+
 
 > Updated to the latest Angular 5.0 - 
 
