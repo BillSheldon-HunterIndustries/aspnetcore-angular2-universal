@@ -11,9 +11,9 @@
 ## By [DevHelp.Online](http://www.DevHelp.Online)
 
 > Updated to the latest Angular 5.0 - 
+
 > Note ServerTransferModule still in the works - fix coming soon
 > Note there are still some Production issues we're working out when Publishing
->>>>>>> Update README.md
 
 <p align="center">
     <img src="./docs/architecture.png" alt="ASP.NET Core 2.0 Angular 5+ Starter" title="ASP.NET Core 2.0 Angular 5+ Starter">
