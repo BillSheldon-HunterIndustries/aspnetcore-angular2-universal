@@ -12,6 +12,13 @@ import { IUser } from '../../models/User';
 import { UserService } from '../../shared/user.service';
 
 @Component({
+import { IUser } from '../../models/User';
+
+import { UserService } from '../../shared/user.service';
+
+
+
+@Component({
     selector: 'app-users',
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.css'],
@@ -30,9 +37,13 @@ import { UserService } from '../../shared/user.service';
         ])
     ]
 })
+
 export class UsersComponent implements OnInit {
 
+
+
   users: IUser[];
+
   selectedUser: IUser;
 
 
@@ -51,27 +62,71 @@ export class UsersComponent implements OnInit {
     }
 
   onSelect(user: IUser): void {
+
     this.selectedUser = user;
+
   }
 
 
-    deleteUser(user) {
-        this.userService.deleteUser(user).subscribe(result => {
-            console.log('Delete user result: ', result);
-            let position = this.users.indexOf(user);
-            this.users.splice(position, 1);
-        }, error => {
-            console.log(`There was an issue. ${error._body}.`);
-        });
+
+  deleteUser(user) {
+
+    this.clearUser();
+
+    this.userService.deleteUser(user).subscribe(result => {
+
+      console.log('Delete user result: ', result);
+
+      let position = this.users.indexOf(user);
+
+      this.users.splice(position, 1);
+
+    }, error => {
+
+      console.log(`There was an issue. ${error._body}.`);
+
+    });
+
+  }
+
+
+
+  onUserUpdate(event) {
+
+    this.clearUser();
+
+  }
+
+
+
+  addUser(newUserName) {
+
+    this.clearUser();
+
+    this.userService.addUser(newUserName).subscribe(result => {
+
+      console.log('Post user result: ', result);
+
+      this.users.push(result);
+
+    }, error => {
+
+      console.log(`There was an issue. ${error._body}.`);
+
+    });
+
+  }
+
+
+
+  clearUser() {
+
+    if (this.selectedUser) {
+
+      this.selectedUser = null;
+
     }
 
-    addUser(newUserName) {
-        this.userService.addUser(newUserName).subscribe(result => {
-            console.log('Post user result: ', result);
-            this.users.push(result);
-        }, error => {
-            console.log(`There was an issue. ${error._body}.`);
-        });
-    }
   }
+
 }
