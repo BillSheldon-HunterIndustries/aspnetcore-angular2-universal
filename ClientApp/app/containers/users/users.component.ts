@@ -12,30 +12,33 @@ import { IUser } from '../../models/User';
 import { UserService } from '../../shared/user.service';
 
 @Component({
-import { IUser } from '../../models/User';
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss'],
+  animations: [
+    // Animation example
+    // Triggered in the ngFor with [@flyInOut]
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateY(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateY(-100%)' }),
+        animate(1000)
+      ]),
+      transition('* => void', [
+        animate(1000, style({ transform: 'translateY(100%)' }))
+      ])
+    ])
+  ]
+})
+export class UsersComponent implements OnInit {
 
-import { UserService } from '../../shared/user.service';
+  users: IUser[];
+  selectedUser: IUser;
 
-
-
-@Component({
-    selector: 'app-users',
-    templateUrl: './users.component.html',
-    styleUrls: ['./users.component.css'],
-    animations: [
-        // Animation example
-        // Triggered in the ngFor with [@flyInOut]
-        trigger('flyInOut', [
-            state('in', style({ transform: 'translateY(0)' })),
-            transition('void => *', [
-                style({ transform: 'translateY(-100%)' }),
-                animate(1000)
-            ]),
-            transition('* => void', [
-                animate(1000, style({ transform: 'translateY(100%)' }))
-            ])
-        ])
-    ]
+  // Use "constructor"s only for dependency injection
+  constructor(
+    private userService: UserService
+  ) { }
 })
 
 export class UsersComponent implements OnInit {
@@ -46,20 +49,19 @@ export class UsersComponent implements OnInit {
 
   selectedUser: IUser;
 
+  // Use "constructor"s only for dependency injection
+  constructor(
+    private userService: UserService
+  ) { }
 
-    // Use "constructor"s only for dependency injection
-    constructor(
-      private userService: UserService
-    ) { }
-
-    // Here you want to handle anything with @Input()'s @Output()'s
-    // Data retrieval / etc - this is when the Component is "ready" and wired up
-    ngOnInit() {
-        this.userService.getUsers().subscribe(result => {
-            console.log('HttpClient [GET] /api/users/allresult', result);
-            this.users = result;
-        });
-    }
+  // Here you want to handle anything with @Input()'s @Output()'s
+  // Data retrieval / etc - this is when the Component is "ready" and wired up
+  ngOnInit() {
+    this.userService.getUsers().subscribe(result => {
+      console.log('HttpClient [GET] /api/users/allresult', result);
+      this.users = result;
+    });
+  }
 
   onSelect(user: IUser): void {
 
@@ -89,26 +91,26 @@ export class UsersComponent implements OnInit {
 
   }
 
+  onUserUpdate(user: IUser) {
+    this.users[this.users.findIndex((u => u.id == user.id))] = user;
+  }
 
-
-  onUserUpdate(event) {
-
-    this.clearUser();
-
+  addUser(newUserName) {
+    this.userService.addUser(newUserName).subscribe(result => {
+      console.log('Post user result: ', result);
+      this.users.push(result);
+      this.selectedUser = result;
   }
 
 
 
   addUser(newUserName) {
-
-    this.clearUser();
-
     this.userService.addUser(newUserName).subscribe(result => {
 
       console.log('Post user result: ', result);
 
       this.users.push(result);
-
+      this.selectedUser = result;
     }, error => {
 
       console.log(`There was an issue. ${error._body}.`);
